@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css" />
+    <style>
+        body {background-image: url("https://geekandsundry.com/wp-content/uploads/2016/08/MBTI-Team-Cover.jpg");}
+    </style>
+</head>
+<body>
+    <h1>Which Team Will YOU Choose?</h1>
+    <% for(let i=0; i < team.length; i++) { %>
+        <a href="/teams/<%= team[i].id %>"><%= team[i].name %></a><br><br>
+    <% } %>
+</body>
+</html>

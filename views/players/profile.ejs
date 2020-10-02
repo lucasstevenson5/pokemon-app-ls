@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css" />
+    <style>
+        body {background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4f91fe65-09ec-4313-b589-951eb61038e1/d5hxq6d-e08d71ca-15d3-42e8-bf3c-1196a65374e6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNGY5MWZlNjUtMDllYy00MzEzLWI1ODktOTUxZWI2MTAzOGUxXC9kNWh4cTZkLWUwOGQ3MWNhLTE1ZDMtNDJlOC1iZjNjLTExOTZhNjUzNzRlNi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.YxuWeQiqc_9bdiK_DYOFrvhGt5kwjwu0uFn9NrW7Rpg");}
+    </style>
+</head>
+<body>
+    <h1>Welcome <%= players.name %></h1>
+    <form action="/players/profile/<%= players.id %>?_method=PUT" method="POST">
+        Name: <input type="text" name="name" value="<%= players.name %>" /><br>
+        Username: <input type="text" name="username" value="<%= players.username %>"/><br>
+        Password: <input type="text" name="password" value="<%= players.password %>"/><br><br>
+        Team: <select name="teamId"">
+            <% for (let i=0; i < teams.length; i++) { %>
+                <option value="<%= teams[i].id %>"><%= teams[i].name %></option>
+            <% } %>
+            
+        </select><br><br>
+        Catch Pokemon: <select name="pokemonId"">
+            <% for (let i=0; i < pokemon.length; i++) { %>
+                <option value="<%= pokemon[i].id %>"><%= pokemon[i].name %></option>
+            <% } %>
+        </select><br>
+        <br><br>
+        <input type="submit" value="Edit Profile and Catch Pokemon"><br><br>
+    </form><br>
+    <h3>Caught Pokemon:</h3>
+    <% for(let i=0; i < players.Pokemons.length; i++) { %>
+        <li>
+            <%= players.Pokemons[i].name %><br><br>
+        </li>
+        <br>
+    <% } %><br><br><br><br>
+    <form action="/players/profile/<%= players.id %>/release?_method=PUT" method="POST">
+        Release Pokemon: <br><br>
+            <% for (let j=0; j < players.Pokemons.length; j++) { %>
+                <% for(let i=0; i < pokemon.length; i++) { %>
+                    <% if(pokemon[i].name === players.Pokemons[j].name){ %>
+                        <input type="checkbox" name="<%= pokemon[i].name %>" value="<%= pokemon[i].id %>"><%= pokemon[i].name %></input><br>
+                    <% } %>
+                <% } %>
+            <% } %>
+        <br><br>
+        <input type="submit" value="Release Pokemon"><br><br><br><br>
+    </form>
+    <a href="/pokemon">View All Available Pokemon</a><br><br><br>
+    <a href="/teams">View All Available Teams</a><br><br><br>
+    <a href="/players">Log Out</a><br><br><br>
+    <form action="/players/profile/<%= players.id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete Entire Profile" />
+    </form>
+</body>
+</html>

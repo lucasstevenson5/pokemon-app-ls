@@ -1,0 +1,61 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
+    color: white;
+}
+
+ul {
+    padding-inline-start: 0px;
+    margin: 0px 425px 0px 0px;
+}
+
+li, a {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    color: black;
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+}
+
+a {
+    padding: 20px;
+}
+
+.pokemon {
+    display: inline-block;
+}
+
+.thumbnail {
+    height: 7vh;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resize-pic {
+    height: auto;
+    width: 12vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form {
+    font-size: 12px;
+}
+
+img {
+    height: 500px;
+    width: auto;
+}
